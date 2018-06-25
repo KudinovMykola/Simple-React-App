@@ -1,6 +1,7 @@
 export default function() {
   return [
-    { general: {
+    { id: 0,
+      general: {
         firstName: "Liana",
         lastName: "Crooks",
         avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/kevinoh/128.jpg"
@@ -20,7 +21,8 @@ export default function() {
         country: "Guinea-Bissau"
       }
     },
-    { general: {
+    { id: 1,
+      general: {
         firstName: "Deontae",
         lastName: "Dare",
         avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/andysolomon/128.jpg"
