@@ -8,11 +8,11 @@ class ClientList extends Component {
     return this.props.clients.map ((client) => {
       return (
         <div onClick={() => this.props.select (client)} key={client.id}>
-          <img class="avatar_item" src={client.general.avatar} alt="avatar" />
-          <div class="name_item">
+          <img className="avatar_item" src={client.general.avatar} alt="avatar" />
+          <div className="name_item">
             {client.general.firstName} {client.general.lastName}
           </div>
-          <div class="job_item">
+          <div className="job_item">
             {client.job.title}
           </div>
         </div>
@@ -22,7 +22,7 @@ class ClientList extends Component {
 
   render () {
     return (
-      <div class="client_list">
+      <div className="client_list">
         {this.showList()}
       </div>
     );

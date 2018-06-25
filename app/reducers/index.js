@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
 import ClientReducers from './client';
+import SelectedClient from './selected_client';
 
 const allReducers = combineReducers({
-  clients: ClientReducers
-})
+  clients: ClientReducers,
+  selected: SelectedClient
+});
 
 export default allReducers
