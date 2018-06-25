@@ -2,36 +2,48 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {select} from '../actions/index';
+import { Container, Grid, Header, Image, Menu } from 'semantic-ui-react'
 
 class ClientList extends Component {
+
   showList() {
-    return this.props.clients.map ((client) => {
+    return this.props.clients.map ((client, index) => {
+
       return (
-        <div onClick={() => this.props.select (client)} key={client.id}>
-          <img className="avatar_item" src={client.general.avatar} alt="avatar" />
-          <div className="name_item">
-            {client.general.firstName} {client.general.lastName}
-          </div>
-          <div className="job_item">
-            {client.job.title}
-          </div>
-        </div>
+        <Menu.Item
+        active = {this.props.selected && this.props.selected.id == client.id }
+        onClick={() => this.props.select (client)} key={client.id}>
+
+          <Grid>
+            <Grid.Column width={6}>
+              <Image size='small' src={client.general.avatar} alt="avatar"  />
+            </Grid.Column>
+            <Grid.Column width={9}>
+              <Container fluid>
+                <p>{client.general.firstName} {client.general.lastName}</p>
+                <p>{client.job.title}</p>
+              </Container>
+            </Grid.Column>
+          </Grid>
+
+        </Menu.Item>
       )
     });
   }
 
   render () {
     return (
-      <div className="client_list">
+      <Menu fluid vertical tabular>
         {this.showList()}
-      </div>
+      </Menu>
     );
   }
 }
 
 function mapStateToProps (state) {
   return {
-    clients: state.clients
+    clients: state.clients,
+    selected: state.selected
   };
 }
 

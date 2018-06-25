@@ -1,37 +1,43 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {  Container, Grid, Header, Icon, Image, Segment } from 'semantic-ui-react'
 
 class Details extends Component {
   render () {
     if(!this.props.selected) {
-      return (<div>Choose client</div>);
+      return (<Container>Choose client</Container>);
     }
 
     return (
-      <div>
-        <img className="avatar_details" src={this.props.selected.general.avatar}
-         alt="avatar" />
-        <div className="name_details">
-          {this.props.selected.general.firstName + " " +
-          this.props.selected.general.lastName}
-        </div>
-        <div className="job_details">
-          {this.props.selected.job.title + " - " +
-          this.props.selected.job.company}
-        </div>
-        <div className="email_details">
-          {"Email: " + this.props.selected.contact.email}
-        </div>
-        <div className="phone_details">
-          {"Phone: " + this.props.selected.contact.phone}
-        </div>
-        <div className="address">
-          <p>{this.props.selected.address.street}</p>
-          <p>{this.props.selected.address.city}</p>
-          <p>{this.props.selected.address.zipCode}</p>
-          <p>{this.props.selected.address.country}</p>
-        </div>
-      </div>
+      <Grid>
+        <Grid.Column width={4}>
+          <Image size='medium'src={this.props.selected.general.avatar} />
+        </Grid.Column>
+
+        <Grid.Column width={12}>
+          <Header.Content as="h3">
+            {this.props.selected.general.firstName + " " +
+            this.props.selected.general.lastName}
+          </Header.Content>
+          <Header.Subheader as="h4">
+            {this.props.selected.job.title + " - " +
+            this.props.selected.job.company}
+          </Header.Subheader>
+          <Container>
+            <p>
+              <Icon name='envelope' />{' ' + this.props.selected.contact.email}
+              <br />
+              <Icon name='phone' />{' '+this.props.selected.contact.phone}
+            </p>
+            <p>
+              {this.props.selected.address.street}<br />
+              {this.props.selected.address.city}<br />
+              {this.props.selected.address.zipCode}<br />
+              {this.props.selected.address.country}<br />
+            </p>
+          </Container>
+        </Grid.Column>
+      </Grid>
     );
   }
 }
