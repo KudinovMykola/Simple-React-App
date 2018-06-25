@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {select} from '../actions/index';
 
 class ClientList extends Component {
   showList() {
     return this.props.clients.map ((client) => {
       return (
-        <div key={client.id}>
+        <div onClick={() => this.props.select (client)} key={client.id}>
           <img class="avatar_item" src={client.general.avatar} alt="avatar" />
           <div class="name_item">
             {client.general.firstName} {client.general.lastName}
@@ -34,4 +35,8 @@ function mapStateToProps (state) {
   };
 }
 
-export default connect(mapStateToProps)(ClientList);
+function matchDispatchToProps (dispatch) {
+  return bindActionCreators({select: select}, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(ClientList);
