@@ -1,7 +1,8 @@
 import React from 'react';
 import ClientList from '../containers/ClientList'
 import Details from '../containers/Details'
-import {  Container, Grid, Menu, Segment } from 'semantic-ui-react'
+import { Container, Grid, Menu, Segment } from 'semantic-ui-react'
+
 
 const WebPage = () => (
   <Container>

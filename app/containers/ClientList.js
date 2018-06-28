@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {select} from '../actions/index';
-import { Container, Grid, Header, Image, Menu } from 'semantic-ui-react'
+import {select, ajaxRequestFunction} from '../actions/index';
+import { Container, Grid, Header, Image, Menu, Segment } from 'semantic-ui-react'
+
 
 class ClientList extends Component {
 
   showList() {
-    return this.props.clients.map ((client, index) => {
+    return this.props.clients.map ( (client) => {
 
       return (
         <Menu.Item
-        active = {this.props.selected && this.props.selected.id == client.id }
-        onClick={() => this.props.select (client)} key={client.id}>
+        active = {this.props.selected &&
+           this.props.selected.contact.email == client.contact.email }
+        onClick={() => this.props.select (client)} key={client.contact.email}>
 
           <Grid>
             <Grid.Column width={6}>
@@ -33,9 +35,15 @@ class ClientList extends Component {
 
   render () {
     return (
-      <Menu fluid vertical tabular>
-        {this.showList()}
-      </Menu>
+      <Segment>
+
+        <Menu fluid vertical tabular>
+          {this.showList()}
+        </Menu>
+
+        {this.props.load ("")}
+
+      </Segment>
     );
   }
 }
@@ -48,7 +56,9 @@ function mapStateToProps (state) {
 }
 
 function matchDispatchToProps (dispatch) {
-  return bindActionCreators({select: select}, dispatch)
+  return bindActionCreators({
+    select: select,
+    load: ajaxRequestFunction}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(ClientList);
