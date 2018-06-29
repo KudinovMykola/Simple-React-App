@@ -21,7 +21,6 @@ class SearchBar extends Component {
         showNoResults = {false}
         onSearchChange={(e, { value }) => {
             this.state.value = value;
-            console.log(this.state.value);
             this.props.filter(this.state.value);
           }}
       />
