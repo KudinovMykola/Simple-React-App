@@ -1,13 +1,15 @@
 import React from 'react';
-import ClientList from '../containers/ClientList'
-import Details from '../containers/Details'
-import { Container, Grid, Menu, Segment } from 'semantic-ui-react'
+import ClientList from '../containers/ClientList';
+import Details from '../containers/Details';
+import SearchBar from '../containers/SearchBar';
+import { Container, Grid, Menu, Segment } from 'semantic-ui-react';
 
 
 const WebPage = () => (
   <Container>
     <Grid>
       <Grid.Column width={4}>
+        <SearchBar />
         <ClientList />
       </Grid.Column>
 

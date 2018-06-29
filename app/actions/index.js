@@ -19,3 +19,11 @@ export const select = (client) => {
     payload: client
   }
 };
+
+export const setFilter = (filter) => {
+  //console.log("action filter");
+  return {
+    type: "SET_FILTER",
+    payload: filter
+  }
+}

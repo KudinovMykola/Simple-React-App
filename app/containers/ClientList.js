@@ -48,9 +48,17 @@ class ClientList extends Component {
   }
 }
 
+function filterList(list, word) {
+  if(word === '')
+    return list;
+  else {
+    return list.filter(client => client.general.firstName.includes(word));
+  }
+}
+
 function mapStateToProps (state) {
   return {
-    clients: state.clients,
+    clients: filterList(state.clients, state.filter),
     selected: state.selected
   };
 }
