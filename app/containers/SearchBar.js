@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {setFilter} from '../actions/index';
-import {Search} from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { setFilter, filter } from '../actions/index';
+import { Search } from 'semantic-ui-react';
 
 class SearchBar extends Component {
 
@@ -17,11 +17,12 @@ class SearchBar extends Component {
       <Search
         loading={false}
         results={[]}
-        value={this.state.value}
-        showNoResults = {false}
-        onSearchChange={(e, { value }) => {
+        value={ this.state.value }
+        showNoResults = { false }
+        onSearchChange={ (e, { value } ) => {
             this.state.value = value;
-            this.props.filter(this.state.value);
+            this.props.setFilter(this.state.value);
+            this.props.filter(this.props.clients, this.state.value);
           }}
       />
     );
@@ -31,12 +32,12 @@ class SearchBar extends Component {
 
 function mapStateToProps (state) {
   return {
-    filter_word: state.filter
+    clients: state.loaded
   };
 }
 
 function matchDispatchToProps (dispatch) {
-  return bindActionCreators({filter: setFilter}, dispatch)
+  return bindActionCreators({ setFilter: setFilter, filter: filter }, dispatch)
 }
 
 

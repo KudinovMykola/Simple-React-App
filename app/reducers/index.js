@@ -1,12 +1,14 @@
-import {combineReducers} from 'redux';
-import Client from './client';
-import SelectedClient from './selected_client';
-import Filter from './filter';
+import { combineReducers } from 'redux';
+import load from './load';
+import select from './select';
+import set_filter from './set_filter'
+import filter from './filter';
 
 const allReducers = combineReducers({
-  clients: Client,
-  selected: SelectedClient,
-  filter: Filter
+  loaded: load,
+  selected: select,
+  filter_word: set_filter,
+  filtered: filter
 });
 
 export default allReducers

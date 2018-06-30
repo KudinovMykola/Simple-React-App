@@ -1,6 +1,12 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {  Container, Grid, Header, Icon, Image, Segment } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {
+  Container,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  Segment } from 'semantic-ui-react';
 
 class Details extends Component {
   render () {
