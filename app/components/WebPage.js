@@ -7,13 +7,13 @@ import { Container, Grid, Menu, Segment } from 'semantic-ui-react';
 
 const WebPage = () => (
   <Container>
-    <Grid>
-      <Grid.Column width={4}>
+    <Grid celled>
+      <Grid.Column width={4} >
         <SearchBar />
         <ClientList />
       </Grid.Column>
 
-      <Grid.Column width={12}>
+      <Grid.Column width={12} >
         <Segment>
           <Details />
         </Segment>
